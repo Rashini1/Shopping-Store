@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothing - Your Ultimate Fashion Destination</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8B4513',secondary:'#F5DEB3'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=Fashion%20model%20with%20brown%20leather%20bag%20wearing%20stylish%20polka%20dot%20dress%20against%20a%20soft%20neutral%20beige%20background%2C%20elegant%20pose%2C%20professional%20fashion%20photography%2C%20high-end%20retail%2C%20summer%20collection%2C%20soft%20lighting%2C%20minimalist%20composition%20with%20space%20for%20text%20on%20the%20left%20side&width=1200&height=600&seq=1&orientation=landscape');
+background-size: cover;
+background-position: right center;
+}
+input:focus {
+outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Top notification bar -->
+<div class="w-full bg-primary text-white px-4 py-2 flex justify-between items-center">
+<div>Support: (401) 555-0120</div>
+<div class="flex items-center gap-2">
+<span>Sign in or GET 20% OFF for your first order.</span>
+<a href="#" class="underline font-medium">Sign up now</a>
+<button class="ml-2 text-white">
+<i class="ri-close-line"></i>
+</button>
+</div>
+</div>
+<!-- Header navigation -->
+<header class="w-full bg-white py-4 px-6 flex justify-between items-center border-b">
+<div class="flex items-center gap-10">
+<a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20fashion%20logo%20design%20with%20elegant%20typography%20and%20simple%20geometric%20shapes%2C%20professional%20branding%2C%20luxury%20retail%2C%20neutral%20color%20palette%20with%20brown%20and%20beige%20tones%2C%20clean%20and%20sophisticated&width=40&height=40&seq=26&orientation=squarish" alt="Logo" class="w-10 h-10 object-contain">
+</a>
+<nav class="hidden md:flex gap-8">
+<a href="#" class="font-medium relative group" onclick="updateProducts('all')">
+<span class="relative">Home
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group" onclick="updateProducts('all')">
+<span class="relative">Shop
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group" onclick="updateProducts('women')">
+<span class="relative">Women
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group" onclick="updateProducts('men')">
+<span class="relative">Men
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group" onclick="updateProducts('accessories')">
+<span class="relative">Accessories
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group">
+<span class="relative">About Us
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group">
+<span class="relative">Contact Us
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+<a href="#" class="font-medium relative group">
+<span class="relative">Blog
+<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-xl"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center">
+<i class="ri-heart-line ri-xl"></i>
+</button>
+<button id="cartButton" class="w-10 h-10 flex items-center justify-center relative">
+<i class="ri-shopping-bag-line ri-xl"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</button>
+<div id="cartDropdown" class="hidden fixed top-0 right-0 h-full w-[400px] bg-white shadow-2xl transform transition-transform duration-300 translate-x-full z-50">
+<div class="flex flex-col h-full">
+<div class="p-4 border-b flex justify-between items-center">
+<h3 class="text-lg font-semibold">Shopping Cart (3)</h3>
+<button id="closeCart" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<div class="flex gap-4 items-center">
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20stylish%20brown%20coat%20with%20turtleneck%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20winter%20collection%2C%20elegant%20pose&width=80&height=80&seq=5&orientation=squarish" alt="Trendy Brown Coat" class="w-20 h-20 object-cover rounded">
+<div class="flex-1">
+<h4 class="font-medium">Trendy Brown Coat</h4>
+<div class="text-primary font-bold">$75.00</div>
+<div class="flex items-center gap-2 mt-2">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item1', -1)">-</button>
+<input type="number" id="item1" class="w-12 text-center border-none" value="1" min="1" max="10">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item1', 1)">+</button>
+</div>
+</div>
+<button class="text-gray-400 hover:text-red-500" onclick="removeItem('item1')">
+<i class="ri-delete-bin-line ri-lg"></i>
+</button>
+</div>
+<div class="flex gap-4 items-center">
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20elegant%20brown%20off-shoulder%20dress%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=80&height=80&seq=7&orientation=squarish" alt="Modern Brown Dress" class="w-20 h-20 object-cover rounded">
+<div class="flex-1">
+<h4 class="font-medium">Modern Brown Dress</h4>
+<div class="text-primary font-bold">$90.00</div>
+<div class="flex items-center gap-2 mt-2">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item2', -1)">-</button>
+<input type="number" id="item2" class="w-12 text-center border-none" value="1" min="1" max="10">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item2', 1)">+</button>
+</div>
+</div>
+<button class="text-gray-400 hover:text-red-500" onclick="removeItem('item2')">
+<i class="ri-delete-bin-line ri-lg"></i>
+</button>
+</div>
+<div class="flex gap-4 items-center">
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20modern%20beige%20sweater%20and%20jeans%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=80&height=80&seq=8&orientation=squarish" alt="Modern Beige Sweater" class="w-20 h-20 object-cover rounded">
+<div class="flex-1">
+<h4 class="font-medium">Modern Beige Sweater</h4>
+<div class="text-primary font-bold">$75.00</div>
+<div class="flex items-center gap-2 mt-2">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item3', -1)">-</button>
+<input type="number" id="item3" class="w-12 text-center border-none" value="1" min="1" max="10">
+<button class="w-6 h-6 flex items-center justify-center border rounded hover:bg-gray-100" onclick="updateQuantity('item3', 1)">+</button>
+</div>
+</div>
+<button class="text-gray-400 hover:text-red-500" onclick="removeItem('item3')">
+<i class="ri-delete-bin-line ri-lg"></i>
+</button>
+</div>
+</div>
+<div class="p-4 border-t">
+<div class="flex justify-between items-center mb-4">
+<span class="font-medium">Subtotal:</span>
+<span class="font-bold text-lg">$240.00</span>
+</div>
+<div class="space-y-2">
+<button class="w-full bg-white border-2 border-primary text-primary py-2 !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap">View Cart</button>
+<button class="w-full bg-primary text-white py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Checkout</button>
+</div>
+</div>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center">
+<i class="ri-user-line ri-xl"></i>
+</button>
+</div>
+</header>
+<!-- Hero section -->
+<section class="hero-section w-full min-h-[600px] relative">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+<div class="container mx-auto px-6 py-20 relative z-10">
+<div class="max-w-lg">
+<div class="inline-flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full mb-6">
+<span class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<i class="ri-price-tag-3-line text-white text-xs"></i>
+</span>
+<span class="font-semibold">50% OFF Summer Super Sale</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-bold mb-4">Step into Style: Your Ultimate Fashion Destination</h1>
+<p class="text-gray-700 mb-8">Discover the latest trends in fashion with our curated collection of clothing, accessories, and footwear. Elevate your style with our exclusive designs.</p>
+<button class="bg-primary text-white px-6 py-3 !rounded-button flex items-center gap-2 whitespace-nowrap hover:bg-primary/90 transition-all group">
+Shop Now
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+</button>
+</div>
+</div>
+<div class="absolute bottom-10 right-10 bg-white/80 backdrop-blur-sm rounded-full p-3 flex items-center gap-2">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+<i class="ri-shopping-bag-line ri-xl"></i>
+</div>
+<span class="font-medium pr-2">Trending Now</span>
+</div>
+</section>
+<!-- Features section -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<i class="ri-truck-line ri-xl"></i>
+</div>
+<div>
+<h3 class="font-semibold">Free Shipping</h3>
+<p class="text-sm text-gray-600">On all orders above $50</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<i class="ri-bank-card-line ri-xl"></i>
+</div>
+<div>
+<h3 class="font-semibold">Flexible Payment</h3>
+<p class="text-sm text-gray-600">Multiple payment methods available</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<i class="ri-customer-service-line ri-xl"></i>
+</div>
+<div>
+<h3 class="font-semibold">24/7 Support</h3>
+<p class="text-sm text-gray-600">Customer service all day long</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories section -->
+<section class="py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Women's category -->
+<div class="col-span-1 md:col-span-1 bg-white rounded-lg overflow-hidden shadow-sm border">
+<div class="aspect-[4/5] relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Two%20stylish%20women%20wearing%20elegant%20floral%20summer%20dresses%2C%20standing%20together%20against%20a%20neutral%20background%2C%20soft%20natural%20lighting%2C%20professional%20fashion%20photography%2C%20high-end%20retail%2C%20summer%20collection%2C%20smiling%2C%20friendship%2C%20shopping%20together&width=600&height=750&seq=2&orientation=portrait" alt="Women's Fashion" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h2 class="text-2xl font-bold mb-4">For Women's</h2>
+<p class="text-gray-600 mb-4">Explore our curated selection of women's fashion, from casual everyday pieces to elegant occasion wear.</p>
+<div class="space-y-2 mb-6">
+<a href="#" class="block text-gray-700 hover:text-primary">T-Shirts and Blouses</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Dresses</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Jackets & Coats</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Jeans</a>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">2500+ Items</span>
+<a href="#" class="text-primary font-medium flex items-center gap-1 hover:opacity-80 group">
+View All
+<i class="ri-arrow-right-s-line transition-transform group-hover:translate-x-1"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Men's category -->
+<div class="col-span-1 md:col-span-1 bg-white rounded-lg overflow-hidden shadow-sm border">
+<div class="aspect-[4/5] relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Stylish%20man%20wearing%20light%20beige%20suit%20with%20sunglasses%20against%20a%20neutral%20background%2C%20professional%20fashion%20photography%2C%20high-end%20retail%2C%20summer%20collection%2C%20sophisticated%2C%20elegant%20pose%2C%20mens%20fashion&width=600&height=750&seq=3&orientation=portrait" alt="Men's Fashion" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h2 class="text-2xl font-bold mb-4">For Men's</h2>
+<p class="text-gray-600 mb-4">Discover our collection of men's fashion essentials, from casual basics to sophisticated formal wear.</p>
+<div class="space-y-2 mb-6">
+<a href="#" class="block text-gray-700 hover:text-primary">T-Shirts and Polos</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Shirts</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Jackets & Coats</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Jeans</a>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">1500+ Items</span>
+<a href="#" class="text-primary font-medium flex items-center gap-1 hover:opacity-80 group">
+View All
+<i class="ri-arrow-right-s-line transition-transform group-hover:translate-x-1"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Accessories category -->
+<div class="col-span-1 md:col-span-2 lg:col-span-1 bg-white rounded-lg overflow-hidden shadow-sm border">
+<div class="aspect-[4/5] relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20fashion%20accessories%20collection%20including%20designer%20handbag%2C%20sunglasses%2C%20hat%2C%20and%20jewelry%20arranged%20on%20a%20neutral%20beige%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20summer%20collection%2C%20elegant%20composition&width=600&height=750&seq=4&orientation=portrait" alt="Accessories" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<h2 class="text-2xl font-bold mb-4">Accessories</h2>
+<p class="text-gray-600 mb-4">Complete your look with our range of stylish accessories, from statement pieces to everyday essentials.</p>
+<div class="space-y-2 mb-6">
+<a href="#" class="block text-gray-700 hover:text-primary">Handbags</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Watches</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Sunglasses</a>
+<a href="#" class="block text-gray-700 hover:text-primary">Hats</a>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">800+ Items</span>
+<a href="#" class="text-primary font-medium flex items-center gap-1 hover:opacity-80 group">
+View All
+<i class="ri-arrow-right-s-line transition-transform group-hover:translate-x-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top seller products section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-base font-normal text-gray-600 mb-2">Our Products</h2>
+<h3 class="text-3xl font-bold mb-8">Our Top Seller Products</h3>
+<div class="flex border-b mb-8">
+<button class="category-tab px-6 py-3 font-medium text-primary border-b-2 border-primary" data-category="all">All</button>
+<button class="category-tab px-6 py-3 font-medium text-gray-600 hover:text-primary" data-category="women">Women</button>
+<button class="category-tab px-6 py-3 font-medium text-gray-600 hover:text-primary" data-category="men">Men</button>
+<button class="category-tab px-6 py-3 font-medium text-gray-600 hover:text-primary" data-category="accessories">Accessories</button>
+</div>
+<div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Product 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">50% off</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20stylish%20brown%20coat%20with%20turtleneck%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20winter%20collection%2C%20elegant%20pose&width=400&height=500&seq=5&orientation=portrait" alt="Trendy Brown Coat" class="w-full h-80 object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm py-3 px-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex gap-4">
+<div class="text-center">
+<span class="block text-primary font-bold">05</span>
+<span class="text-xs text-gray-500">Days</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">12</span>
+<span class="text-xs text-gray-500">Hours</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">30</span>
+<span class="text-xs text-gray-500">Mins</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">25</span>
+<span class="text-xs text-gray-500">Secs</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Trendy Brown Coat</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$75.00</span>
+<span class="text-sm text-gray-500 line-through">$150.00</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-yellow-500 text-white text-xs font-medium px-2 py-1 rounded">25% off</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20red%20beret%20and%20light%20beige%20coat%20with%20striped%20shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose%2C%20smiling&width=400&height=500&seq=6&orientation=portrait" alt="Classy Light Coat" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Classy Light Coat</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$165.00</span>
+<span class="text-sm text-gray-500 line-through">$220.00</span>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">50% off</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20elegant%20brown%20off-shoulder%20dress%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=400&height=500&seq=7&orientation=portrait" alt="Modern Brown Dress" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Modern Brown Dress</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$90.00</span>
+<span class="text-sm text-gray-500 line-through">$180.00</span>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">50% off</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20modern%20beige%20sweater%20and%20jeans%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=400&height=500&seq=8&orientation=portrait" alt="Modern Beige Sweater" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Modern Beige Sweater</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.7</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$75.00</span>
+<span class="text-sm text-gray-500 line-through">$150.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Limited time offer section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-6">
+<div class="bg-gray-50 rounded-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2">
+<img src="https://readdy.ai/api/search-image?query=Two%20stylish%20women%20wearing%20elegant%20beige%20and%20cream%20outfits%2C%20standing%20together%20against%20a%20neutral%20background%2C%20soft%20natural%20lighting%2C%20professional%20fashion%20photography%2C%20high-end%20retail%2C%20autumn%20collection%2C%20friendship%2C%20shopping%20together%2C%20straw%20hat&width=800&height=600&seq=9&orientation=landscape" alt="Fashion Sale" class="w-full h-full object-cover object-top">
+</div>
+<div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<span class="text-sm font-medium text-primary">Limited Time Offers</span>
+<h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">25% Off All Fashion Favorites - Limited Time!</h2>
+<p class="text-gray-600 mb-8">Upgrade your wardrobe with our exclusive collection. This limited-time offer brings you the season's hottest styles at incredible prices. Don't miss out!</p>
+<button class="bg-primary text-white px-6 py-3 !rounded-button flex items-center gap-2 whitespace-nowrap hover:bg-primary/90 transition-all group">
+Shop Now
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Deals of the day section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl font-bold">Today Deals</h2>
+<h3 class="text-3xl font-bold">Deals of the Day</h3>
+<div class="flex items-center gap-2">
+<span class="text-sm text-gray-600">Set a personalized sale across the entire store or on categories, products, attributes, brands, tags, etc.</span>
+</div>
+</div>
+<div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Deal 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">Hot Deal</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Woman%20wearing%20elegant%20floral%20summer%20dress%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20summer%20collection%2C%20elegant%20pose&width=400&height=500&seq=10&orientation=portrait" alt="Summer Floral Dress" class="w-full h-80 object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm py-3 px-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex gap-4">
+<div class="text-center">
+<span class="block text-primary font-bold">02</span>
+<span class="text-xs text-gray-500">Days</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">08</span>
+<span class="text-xs text-gray-500">Hours</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">45</span>
+<span class="text-xs text-gray-500">Mins</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">12</span>
+<span class="text-xs text-gray-500">Secs</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Summer Floral Dress</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$65.00</span>
+<span class="text-sm text-gray-500 line-through">$130.00</span>
+</div>
+</div>
+</div>
+<!-- Deal 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">Hot Deal</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Luxury%20leather%20handbag%20in%20beige%20color%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20elegant%20composition&width=400&height=500&seq=11&orientation=portrait" alt="Elegant Leather Handbag" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Elegant Leather Handbag</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.7</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$125.00</span>
+<span class="text-sm text-gray-500 line-through">$250.00</span>
+</div>
+</div>
+</div>
+<!-- Deal 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">Hot Deal</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Man%20wearing%20casual%20linen%20shirt%20in%20beige%20color%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20summer%20collection%2C%20elegant%20pose&width=400&height=500&seq=12&orientation=portrait" alt="Men's Linen Shirt" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Men's Linen Shirt</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$45.00</span>
+<span class="text-sm text-gray-500 line-through">$90.00</span>
+</div>
+</div>
+</div>
+<!-- Deal 4 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">Hot Deal</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="https://readdy.ai/api/search-image?query=Stylish%20sunglasses%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20summer%20collection%2C%20elegant%20composition&width=400&height=500&seq=13&orientation=portrait" alt="Designer Sunglasses" class="w-full h-80 object-cover object-top">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">Designer Sunglasses</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">4.6</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">$85.00</span>
+<span class="text-sm text-gray-500 line-through">$170.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter section -->
+<section class="py-16 bg-primary/5">
+<div class="container mx-auto px-6">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+<p class="text-gray-600 mb-8">Stay updated with our latest collections, exclusive offers, and fashion tips. Join our community today!</p>
+<div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+<input type="email" placeholder="Enter your email address" class="flex-grow px-4 py-3 rounded-lg border-none focus:ring-2 focus:ring-primary/50">
+<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-all hover:scale-105">
+Subscribe Now
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white pt-16 pb-8 border-t">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="mb-6 inline-block">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20fashion%20logo%20design%20with%20elegant%20typography%20and%20simple%20geometric%20shapes%2C%20professional%20branding%2C%20luxury%20retail%2C%20neutral%20color%20palette%20with%20brown%20and%20beige%20tones%2C%20clean%20and%20sophisticated&width=40&height=40&seq=26&orientation=squarish" alt="Logo" class="w-10 h-10 object-contain">
+</a>
+<p class="text-gray-600 mb-6">Your ultimate fashion destination for trendy clothing, accessories, and footwear. Discover the latest styles and elevate your wardrobe.</p>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all group">
+<i class="ri-facebook-fill transition-transform group-hover:scale-110"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all group">
+<i class="ri-instagram-line transition-transform group-hover:scale-110"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all group">
+<i class="ri-twitter-x-line transition-transform group-hover:scale-110"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition-all group">
+<i class="ri-pinterest-line transition-transform group-hover:scale-110"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-600 hover:text-primary">Home</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Shop</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">About Us</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Blog</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Customer Service</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-600 hover:text-primary">My Account</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Orders & Returns</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Shipping Policy</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">FAQ</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Contact Info</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 mt-1 flex items-center justify-center text-primary">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-600">123 Fashion Street, New York, NY 10001, USA</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-600">(401) 555-0120</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-600">support@clothingstore.com</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-600">Mon-Sat: 9:00 AM - 8:00 PM</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-600 mb-4 md:mb-0">© 2025 Clothing. All rights reserved.</p>
+<div class="flex items-center gap-3">
+<span class="text-gray-600">We Accept:</span>
+<div class="flex gap-2">
+<i class="ri-visa-fill ri-lg"></i>
+<i class="ri-mastercard-fill ri-lg"></i>
+<i class="ri-paypal-fill ri-lg"></i>
+<i class="ri-apple-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.querySelector('.mobile-menu-button');
+const mobileMenu = document.querySelector('.mobile-menu');
+const cartButton = document.getElementById('cartButton');
+const cartDropdown = document.getElementById('cartDropdown');
+const closeCart = document.getElementById('closeCart');
+cartButton.addEventListener('click', function() {
+cartDropdown.classList.remove('hidden');
+setTimeout(() => {
+cartDropdown.classList.remove('translate-x-full');
+}, 10);
+});
+closeCart.addEventListener('click', function() {
+cartDropdown.classList.add('translate-x-full');
+setTimeout(() => {
+cartDropdown.classList.add('hidden');
+}, 300);
+});
+document.addEventListener('click', function(event) {
+if (!cartDropdown.contains(event.target) && !cartButton.contains(event.target)) {
+cartDropdown.classList.add('translate-x-full');
+setTimeout(() => {
+cartDropdown.classList.add('hidden');
+}, 300);
+}
+});
+window.updateQuantity = function(itemId, change) {
+const input = document.getElementById(itemId);
+let value = parseInt(input.value) + change;
+if (value >= 1 && value <= 10) {
+input.value = value;
+}
+};
+window.removeItem = function(itemId) {
+const item = document.getElementById(itemId).closest('.flex.gap-4');
+item.style.opacity = '0';
+item.style.transform = 'translateX(100%)';
+setTimeout(() => {
+item.remove();
+}, 300);
+};
+if (mobileMenuButton && mobileMenu) {
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+}
+const productsData = {
+all: [
+{
+name: "Trendy Brown Coat",
+price: "$75.00",
+originalPrice: "$150.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20stylish%20brown%20coat%20with%20turtleneck%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20winter%20collection%2C%20elegant%20pose&width=400&height=500&seq=5&orientation=portrait"
+},
+{
+name: "Classy Light Coat",
+price: "$165.00",
+originalPrice: "$220.00",
+rating: "4.9",
+discount: "25% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20red%20beret%20and%20light%20beige%20coat%20with%20striped%20shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose%2C%20smiling&width=400&height=500&seq=6&orientation=portrait"
+},
+{
+name: "Modern Brown Dress",
+price: "$90.00",
+originalPrice: "$180.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20elegant%20brown%20off-shoulder%20dress%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=400&height=500&seq=7&orientation=portrait"
+},
+{
+name: "Modern Beige Sweater",
+price: "$75.00",
+originalPrice: "$150.00",
+rating: "4.7",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20modern%20beige%20sweater%20and%20jeans%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20autumn%20collection%2C%20elegant%20pose&width=400&height=500&seq=8&orientation=portrait"
+}
+],
+women: [
+{
+name: "Elegant Evening Dress",
+price: "$120.00",
+originalPrice: "$240.00",
+rating: "4.9",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20elegant%20black%20evening%20dress%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20luxury%20collection%2C%20elegant%20pose&width=400&height=500&seq=14&orientation=portrait"
+},
+{
+name: "Summer Floral Maxi",
+price: "$85.00",
+originalPrice: "$170.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20flowing%20floral%20maxi%20dress%20in%20soft%20pastel%20colors%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20summer%20collection&width=400&height=500&seq=15&orientation=portrait"
+},
+{
+name: "Business Blazer",
+price: "$95.00",
+originalPrice: "$190.00",
+rating: "4.7",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20professional%20beige%20blazer%20with%20matching%20pants%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20office%20wear&width=400&height=500&seq=16&orientation=portrait"
+},
+{
+name: "Casual Jumpsuit",
+price: "$70.00",
+originalPrice: "$140.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Woman%20wearing%20stylish%20beige%20jumpsuit%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20casual%20collection&width=400&height=500&seq=17&orientation=portrait"
+}
+],
+men: [
+{
+name: "Classic Suit",
+price: "$250.00",
+originalPrice: "$500.00",
+rating: "4.9",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Man%20wearing%20modern%20beige%20suit%20with%20white%20shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20formal%20wear&width=400&height=500&seq=18&orientation=portrait"
+},
+{
+name: "Casual Blazer",
+price: "$145.00",
+originalPrice: "$290.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Man%20wearing%20casual%20brown%20blazer%20with%20t-shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20smart%20casual&width=400&height=500&seq=19&orientation=portrait"
+},
+{
+name: "Summer Linen Shirt",
+price: "$65.00",
+originalPrice: "$130.00",
+rating: "4.7",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Man%20wearing%20light%20beige%20linen%20shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20summer%20collection&width=400&height=500&seq=20&orientation=portrait"
+},
+{
+name: "Designer Jeans",
+price: "$95.00",
+originalPrice: "$190.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Man%20wearing%20premium%20dark%20jeans%20with%20white%20shirt%2C%20professional%20fashion%20photography%20against%20neutral%20background%2C%20high-end%20retail%2C%20casual%20wear&width=400&height=500&seq=21&orientation=portrait"
+}
+],
+accessories: [
+{
+name: "Leather Handbag",
+price: "$175.00",
+originalPrice: "$350.00",
+rating: "4.9",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Luxury%20brown%20leather%20handbag%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20elegant%20composition&width=400&height=500&seq=22&orientation=portrait"
+},
+{
+name: "Designer Watch",
+price: "$225.00",
+originalPrice: "$450.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Luxury%20watch%20with%20brown%20leather%20strap%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20elegant%20composition&width=400&height=500&seq=23&orientation=portrait"
+},
+{
+name: "Silk Scarf",
+price: "$55.00",
+originalPrice: "$110.00",
+rating: "4.7",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Elegant%20silk%20scarf%20with%20beige%20and%20brown%20pattern%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20luxury%20accessories&width=400&height=500&seq=24&orientation=portrait"
+},
+{
+name: "Leather Belt",
+price: "$45.00",
+originalPrice: "$90.00",
+rating: "4.8",
+discount: "50% off",
+image: "https://readdy.ai/api/search-image?query=Premium%20brown%20leather%20belt%20on%20neutral%20background%2C%20professional%20product%20photography%2C%20high-end%20retail%2C%20elegant%20composition&width=400&height=500&seq=25&orientation=portrait"
+}
+]
+};
+function createProductCard(product) {
+return `
+<div class="bg-white rounded-lg overflow-hidden shadow-sm group">
+<div class="relative">
+<span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">${product.discount}</span>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-heart-line transition-transform group-hover:scale-110"></i>
+</button>
+<button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-primary hover:text-white transition-all group">
+<i class="ri-eye-line transition-transform group-hover:scale-110"></i>
+</button>
+</div>
+<img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm py-3 px-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex gap-4">
+<div class="text-center">
+<span class="block text-primary font-bold">05</span>
+<span class="text-xs text-gray-500">Days</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">12</span>
+<span class="text-xs text-gray-500">Hours</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">30</span>
+<span class="text-xs text-gray-500">Mins</span>
+</div>
+<div class="text-center">
+<span class="block text-primary font-bold">25</span>
+<span class="text-xs text-gray-500">Secs</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-medium">${product.name}</h3>
+<div class="flex items-center gap-1">
+<i class="ri-star-fill text-yellow-400"></i>
+<span class="text-sm font-medium">${product.rating}</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary">${product.price}</span>
+<span class="text-sm text-gray-500 line-through">${product.originalPrice}</span>
+</div>
+</div>
+</div>
+`;
+}
+function updateProducts(category) {
+const productsGrid = document.getElementById('products-grid');
+const products = productsData[category];
+productsGrid.innerHTML = products.map(product => createProductCard(product)).join('');
+}
+const categoryTabs = document.querySelectorAll('.category-tab');
+categoryTabs.forEach(tab => {
+tab.addEventListener('click', () => {
+categoryTabs.forEach(t => {
+t.classList.remove('text-primary', 'border-b-2', 'border-primary');
+t.classList.add('text-gray-600');
+});
+tab.classList.remove('text-gray-600');
+tab.classList.add('text-primary', 'border-b-2', 'border-primary');
+updateProducts(tab.dataset.category);
+});
+});
+updateProducts('all');
+});
+</script>
+</body>
+</html>
